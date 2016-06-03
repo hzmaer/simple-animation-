@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zmodo app start up</title>
+	<script  src="js/jquery.js"></script>
+	<script  src="js/observer.js"></script>
+	<script  src="js/pageA.js"></script>
+	<script  src="js/pageB.js"></script>
+	<script  src="js/pageC.js"></script>
+	<script  src="js/christmas.js"></script>
+	<style>
+		html{font:20px/2 "Helvetica Light","Microsoft Yahei",Tahoma,simsun,Arial,sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;}
+		.page-a a{width:270px;height: 90px;line-height: 90px;text-align: center;display: inline-block;font-size: 32px;border-radius: 45px;text-decoration: none;}
+		a.log{color:#14b8e2;background: #fff;position: absolute;bottom: 50px;left:20px;}
+		a.sign{color:#fff;background: #14b8e2;position: absolute;bottom: 50px;left:345px;}
+		.page-box{width:640px;height: 950px;margin-left: 300px;position: relative;}
+		.page-a{background: url(images/bg01.jpg);width:640px;height: 950px;position: absolute;opacity: 1;top:0px;left:0px;}
+		.page-b,.page-c{top:0px;left:0px;position: absolute;opacity: 0;}
+		.logo{position: absolute;top:300px;left:80px;}
+		.page-b{background: url(images/bg01.jpg);width:640px;height: 950px;position: relative;}
+		.icon{position: absolute;}
+		a.circle{width:140px;height: 140px;line-height: 140px;text-align: center;display: inline-block;font-size: 100px;background: #14b8e2;color:#fff;text-decoration: none;border-radius: 50%;position: absolute;left:250px;bottom: -170px;transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);}
+		.icon01{left:160px;top:260px;transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);}
+		.icon02{left:160px;top:590px;transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);}
+		.page-c{background: url(images/loginbg.png);width:640px;height: 950px;}
+		.page-a .cursor-box{position: absolute;left: 130px;top: 830px;}
+          .page-b .cursor-box{position: absolute;left: 300px;top: 190px;}
+          .page-c .cursor-box{position: absolute;left: 25px;top: 50px;}
+	 	.cursor{background: url(images/cursor.png);width:125px;height: 125px;margin-top: -33px;margin-left: -40px;}
+		.cursor-animation{-webkit-animation:circle 0.3s  2;opacity: 0;-o-animation:circle 0.3s  2;animation:circle 0.3s  2;}
+		@keyframes circle{0%{-webkit-transform:scale(0);transform:scale(0)}50%{opacity:1;filter:alpha(opacity=100)\9}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0;filter:alpha(opacity=0)\9}}
+		@-webkit-keyframes  circle{0%{-webkit-transform:scale(0);transform:scale(0)}50%{opacity:1;filter:alpha(opacity=100)\9}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0;filter:alpha(opacity=0)\9}}
+		/**
+ * 页面切换
+ * 镜头方法
+ */
+		.effect-out{-webkit-animation: effectOut 1s ease-in-out forwards;}
+		@-webkit-keyframes effectOut{0% { opacity:1;}100% {opacity:0;}}
+		@-moz-keyframes effectOut{0%{ opacity:1;}100% {opacity:0;}}
+		.effect-in{ -webkit-animation: effectIn 1s forwards;}
+		@-webkit-keyframes effectIn{0% { opacity:0; }100% {opacity:1; }}
+		@-moz-keyframes effectIn{0% { opacity:0; }100% {opacity:1; }}
+		.ani-up{-webkit-animation: aniUp 1s forwards;}
+		@-webkit-keyframes aniUp{0%{transform:translate3d(0,0,0);}100%{transform:translate3d(0,-200px,0);}}
+           .ani-opacity{-webkit-animation: aniOpacity 0.3s forwards;}
+           @-webkit-keyframes aniOpacity{0% {opacity:0;}100%{opacity:1;}}
+
+	</style>
+</head>
+<body>
+<section class="page-box">
+	<section  class="page-a  page"  >
+		<img src="images/logo.png" alt="" class="logo">
+		<a href="" class="log">Log In</a>
+		<a href="" class="sign">Sign Up</a>
+		<div class="cursor-box">
+			<div class="cursor  cursor-animation"></div>
+		</div>
+	</section>
+	<section  class="page-b  page"  >
+		<img src="images/icon01.png" alt=""  class="icon01  icon">
+		<img src="images/icon02.png" alt=""  class="icon02  icon">
+		<a href="" class="circle">X</a>
+    <div class="cursor-box">
+      <div class="cursor" style="opacity:0;"></div>
+    </div>
+	</section>
+	<section  class="page-c  page" >
+<div class="cursor-box">
+      <div class="cursor" style="opacity:0;"></div>
+    </div>
+	</section>
+</section>
+</body>
+</html>
