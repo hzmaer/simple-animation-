@@ -1,0 +1,98 @@
+function changePage(element, effect, callback) {
+    element
+        .addClass(effect)
+        .one("animationend webkitAnimationEnd", function() {
+            callback && callback();
+        })
+}
+
+var Christmas = function() {
+    //页面容器元素
+    var $pageA = $(".page-a");
+    var $pageB = $(".page-b");
+    var $pageC = $(".page-c");
+
+    //观察者
+    var observer = new Observer();
+
+    function pageA(){
+        setTimeout(function() {   
+            observer.publish("compelteA");
+        }, 1000)        
+    }
+    pageA();
+ 
+    observer.subscribe("compelteA", function() {
+    function pageB(){
+    $(".page-a").addClass("effect-out");
+    $(".page-b").addClass("effect-in");
+    $(".icon,.circle").addClass("ani-up");
+    setTimeout(function() { 
+    $(".page-b .cursor").addClass("cursor-animation");
+     },1500)
+    setTimeout(function() {     
+    observer.publish("compelteB");
+    },2500)
+   }
+   pageB();
+    });
+
+  observer.subscribe("compelteB", function() {
+    function pageC(){
+    $(".page-b").removeClass("effect-in").addClass("effect-out");
+    $(".page-c").removeClass("effect-out").addClass("effect-in");
+    setTimeout(function() { 
+    $(".page-c .cursor").addClass("cursor-animation");
+     },1500)
+    setTimeout(function() {     
+    observer.publish("compelteC");
+    },2500)  
+    }
+    pageC();
+   });
+  observer.subscribe("compelteC", function() { 
+    $(".page-c").removeClass("effect-in").addClass("effect-out");
+    $(".page-a").removeClass("effect-out").addClass("effect-in");
+     });
+   
+    //A场景页面
+    // new pageA(function() {
+    //     observer.publish("completeA");
+    // })
+
+    //进入B场景
+    // observer.subscribe("pageB", function() {
+    //     new pageB(function() {
+    //         observer.publish("completeB");
+    //     })
+    // })
+
+    //进入C场景
+    // observer.subscribe("pageC", function() {
+    //     new pageC()
+    // })
+
+
+    //页面A-B场景切换
+    // observer.subscribe("completeA", function() {
+    //     alert("aaa")
+    //     changePage($pageA, "effect-out", function() {
+    //         console.debug("qqq")
+    //     	alert("ppp")
+    //         observer.publish("pageB");
+    //     })
+    // })
+
+    
+    //页面B-C场景切换
+    //?
+
+};
+
+
+
+
+
+        Christmas();
+
+
