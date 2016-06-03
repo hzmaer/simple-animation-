@@ -1,4 +1,4 @@
-# simple-animation-
+
 利用观察者模式制作多场景动画
 用法 example
 
